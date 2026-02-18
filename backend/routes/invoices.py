@@ -217,6 +217,41 @@ async def download_invoice_pdf(invoice_id: str, current_user: dict = Depends(get
     
     # Return as downloadable file
     filename = f"invoice_{invoice['invoice_number']}.pdf"
+
+
+@router.get("/public/{invoice_id}/pdf")
+async def download_public_invoice_pdf(invoice_id: str):
+    """Public PDF download for client portal (no auth required)"""
+    # Get invoice
+    invoice = await invoices_collection.find_one({"id": invoice_id}, {"_id": 0})
+    if not invoice:
+        raise HTTPException(status_code=404, detail="Invoice not found")
+    
+    # Get invoice items
+    items = await invoice_items_collection.find({"invoice_id": invoice_id}, {"_id": 0}).to_list(1000)
+    
+    # Get client
+    client = await clients_collection.find_one({"id": invoice["client_id"]}, {"_id": 0})
+    
+    # Get user info
+    user = await users_collection.find_one({"id": invoice["user_id"]}, {"_id": 0, "password_hash": 0})
+    
+    company_data = {
+        "name": user.get("full_name", ""),
+        "email": user.get("email", "")
+    }
+    
+    # Generate PDF
+    pdf_buffer = generate_invoice_pdf(invoice, items, client, company_data)
+    
+    # Return as downloadable file
+    filename = f"invoice_{invoice['invoice_number']}.pdf"
+    return StreamingResponse(
+        pdf_buffer,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename={filename}"}
+    )
+
     return StreamingResponse(
         pdf_buffer,
         media_type="application/pdf",
