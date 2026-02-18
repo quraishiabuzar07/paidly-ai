@@ -47,3 +47,15 @@ async def get_subscription(current_user: dict = Depends(get_current_user)):
         "invoice_count": user.get("invoice_count", 0),
         "subscription_details": subscription
     }
+
+
+@router.post("/trigger-reminders")
+async def trigger_reminders_manually(current_user: dict = Depends(get_current_user)):
+    """Manually trigger automated reminder check (for testing/admin)"""
+    from utils.scheduler import check_and_send_reminders
+    
+    try:
+        await check_and_send_reminders()
+        return {"message": "Reminder check completed successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to run reminder check: {str(e)}")
