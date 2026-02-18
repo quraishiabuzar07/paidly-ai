@@ -284,15 +284,15 @@ const ClientPortal = () => {
                       </div>
                       {!file.is_locked ? (
                         <Button
-                          size=\"sm\"
+                          size="sm"
                           onClick={() => handleDownload(file.id, file.file_name)}
-                          data-testid=\"download-deliverable-btn\"
+                          data-testid="download-deliverable-btn"
                         >
-                          <Download className=\"h-4 w-4 mr-2\" />
+                          <Download className="h-4 w-4 mr-2" />
                           Download
                         </Button>
                       ) : (
-                        <span className=\"text-sm text-muted-foreground\">Pay to unlock</span>
+                        <span className="text-sm text-muted-foreground">Pay to unlock</span>
                       )}
                     </div>
                   ))}
