@@ -303,28 +303,28 @@ const ClientPortal = () => {
 
           {/* Payment Button */}
           {!isPaid && (
-            <Card className=\"border-primary shadow-lg\">
-              <CardContent className=\"p-6\">
-                <div className=\"flex items-center justify-between\">
+            <Card className="border-primary shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
                   <div>
-                    <h3 className=\"text-lg font-semibold mb-1\">Ready to Pay?</h3>
-                    <p className=\"text-sm text-muted-foreground\">
+                    <h3 className="text-lg font-semibold mb-1">Ready to Pay?</h3>
+                    <p className="text-sm text-muted-foreground">
                       Secure payment powered by Stripe
                       {data.deliverables?.length > 0 && ' • Deliverables will unlock instantly'}
                     </p>
                   </div>
                   <Button
-                    size=\"lg\"
+                    size="lg"
                     onClick={handlePayment}
                     disabled={paying}
-                    className=\"px-8\"
-                    data-testid=\"pay-invoice-btn\"
+                    className="px-8"
+                    data-testid="pay-invoice-btn"
                   >
                     {paying ? (
                       'Redirecting...'
                     ) : (
                       <>
-                        <CreditCard className=\"h-5 w-5 mr-2\" />
+                        <CreditCard className="h-5 w-5 mr-2" />
                         Pay {formatCurrency(invoice.total_amount, invoice.currency)}
                       </>
                     )}
@@ -335,11 +335,11 @@ const ClientPortal = () => {
           )}
 
           {isPaid && (
-            <Card className=\"border-green-600 bg-green-50 dark:bg-green-950\">
-              <CardContent className=\"p-6 text-center\">
-                <CheckCircle className=\"h-12 w-12 text-green-600 mx-auto mb-3\" />
-                <h3 className=\"text-lg font-semibold mb-1\">Payment Received!</h3>
-                <p className=\"text-sm text-muted-foreground\">
+            <Card className="border-green-600 bg-green-50 dark:bg-green-950">
+              <CardContent className="p-6 text-center">
+                <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-3" />
+                <h3 className="text-lg font-semibold mb-1">Payment Received!</h3>
+                <p className="text-sm text-muted-foreground">
                   Thank you for your payment. Your deliverables are now available for download.
                 </p>
               </CardContent>
@@ -349,8 +349,8 @@ const ClientPortal = () => {
       </main>
 
       {/* Footer */}
-      <footer className=\"border-t mt-16\">
-        <div className=\"container mx-auto px-4 py-6 max-w-4xl text-center text-sm text-muted-foreground\">
+      <footer className="border-t mt-16">
+        <div className="container mx-auto px-4 py-6 max-w-4xl text-center text-sm text-muted-foreground">
           <p>Powered by ClientNudge AI • Secure Payment Processing</p>
         </div>
       </footer>
