@@ -35,7 +35,7 @@ async def generate_ai_reminder(invoice_data: dict, client_data: dict, reminder_t
         return templates.get(reminder_type, templates["polite"])
     
     # AI-powered reminder for Pro/Agency users
-    prompt_context = f\"\"\"Generate a professional payment reminder email for:
+    prompt_context = f"""Generate a professional payment reminder email for:
     
 Client: {client_data['name']} ({client_data['company'] or 'Individual'})
 Invoice Number: {invoice_data['invoice_number']}
@@ -50,7 +50,7 @@ Guidelines:
 - Don't use subject line
 - Don't sign off with a name
 - Focus on the payment request
-\"\"\"
+"""
     
     try:
         chat = LlmChat(
