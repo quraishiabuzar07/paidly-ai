@@ -172,6 +172,10 @@ const InvoiceDetail = () => {
               </p>
             </div>
             <div className="flex gap-2">
+              <Button variant="outline" onClick={handleDownloadPDF} data-testid="download-pdf-btn">
+                <FileDown className="h-4 w-4 mr-2" />
+                Download PDF
+              </Button>
               <Button variant="outline" onClick={copyPortalLink} data-testid="copy-portal-link">
                 <Copy className="h-4 w-4 mr-2" />
                 Copy Portal Link
