@@ -112,6 +112,26 @@ const ClientPortal = () => {
     }
   };
 
+  const handleDownloadPDF = async () => {
+    try {
+      // For public portal, use public invoice PDF endpoint
+      const response = await api.get(`/invoices/${id}/pdf`, {
+        responseType: 'blob',
+      });
+      
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `invoice_${invoice.invoice_number}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      toast.success('PDF downloaded successfully');
+    } catch (error) {
+      toast.error('Failed to download PDF');
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
