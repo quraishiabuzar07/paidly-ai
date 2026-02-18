@@ -55,9 +55,9 @@ Guidelines:
     try:
         chat = LlmChat(
             api_key=EMERGENT_LLM_KEY,
-            session_id=f"reminder-{invoice_data['id']}-{datetime.now().timestamp()}\",
-            system_message=\"You are a professional payment reminder assistant. Generate concise, professional reminder messages.\"
-        ).with_model(\"openai\", \"gpt-5.2\")
+            session_id=f"reminder-{invoice_data['id']}-{datetime.now().timestamp()}",
+            system_message="You are a professional payment reminder assistant. Generate concise, professional reminder messages."
+        ).with_model("openai", "gpt-5.2")
         
         user_message = UserMessage(text=prompt_context)
         response = await chat.send_message(user_message)
@@ -65,7 +65,7 @@ Guidelines:
         return response
     except Exception as e:
         # Fallback to template if AI fails
-        return f\"Reminder: Invoice {invoice_data['invoice_number']} for ${invoice_data['total_amount']} {invoice_data['currency']} requires your attention. Due date: {invoice_data['due_date']}.\"
+        return f"Reminder: Invoice {invoice_data['invoice_number']} for ${invoice_data['total_amount']} {invoice_data['currency']} requires your attention. Due date: {invoice_data['due_date']}."
 
 @router.post(\"/generate\")
 async def generate_reminder(reminder_data: ReminderGenerate, current_user: dict = Depends(get_current_user)):
