@@ -162,12 +162,23 @@ const ClientPortal = () => {
               <h1 className="text-3xl font-heading font-bold text-primary">ClientNudge AI</h1>
               <p className="text-sm text-muted-foreground mt-1">Secure Payment Portal</p>
             </div>
-            {isPaid && (
-              <div className="flex items-center gap-2 text-green-600">
-                <CheckCircle className="h-5 w-5" />
-                <span className="font-medium">Paid</span>
-              </div>
-            )}
+            <div className="flex items-center gap-3">
+              {isPaid && (
+                <div className="flex items-center gap-2 text-green-600">
+                  <CheckCircle className="h-5 w-5" />
+                  <span className="font-medium">Paid</span>
+                </div>
+              )}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleDownloadPDF}
+                data-testid="download-pdf-btn"
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Download PDF
+              </Button>
+            </div>
           </div>
         </div>
       </header>
