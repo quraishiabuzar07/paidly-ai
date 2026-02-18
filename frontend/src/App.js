@@ -8,6 +8,8 @@ import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
 import Invoices from './pages/Invoices';
+import InvoiceDetail from './pages/InvoiceDetail';
+import ClientPortal from './pages/ClientPortal';
 import Settings from './pages/Settings';
 import './App.css';
 
