@@ -114,8 +114,8 @@ const ClientPortal = () => {
 
   const handleDownloadPDF = async () => {
     try {
-      // For public portal, use public invoice PDF endpoint
-      const response = await api.get(`/invoices/${id}/pdf`, {
+      // Use public endpoint for client portal (no auth required)
+      const response = await api.get(`/invoices/public/${id}/pdf`, {
         responseType: 'blob',
       });
       
