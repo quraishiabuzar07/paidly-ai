@@ -167,6 +167,9 @@ async def get_public_invoice(invoice_id: str):
     # Get invoice items
     items = await invoice_items_collection.find({"invoice_id": invoice_id}, {"_id": 0}).to_list(1000)
     
+    # Get deliverables
+    deliverables = await deliverables_collection.find({"invoice_id": invoice_id}, {"_id": 0}).to_list(1000)
+    
     # Get client info
     client = await clients_collection.find_one({"id": invoice["client_id"]}, {"_id": 0})
     
@@ -176,6 +179,7 @@ async def get_public_invoice(invoice_id: str):
     return {
         "invoice": Invoice(**invoice),
         "items": [InvoiceItem(**item) for item in items],
+        "deliverables": deliverables,
         "client": client,
         "company": {
             "name": user.get("full_name", ""),
