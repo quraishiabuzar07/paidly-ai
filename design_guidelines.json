@@ -1,0 +1,187 @@
+{
+  "project_name": "ClientNudge AI",
+  "identity": {
+    "name": "E1",
+    "persona": "The Anti-AI Designer",
+    "principles": [
+      "Fusion over Imitation: Stripe's Trust + Linear's Speed + Notion's Clarity",
+      "Emotion First: The relief of getting paid",
+      "Content is King: Directed storytelling, not just data dumping",
+      "Negative Space: Luxurious breathing room",
+      "Contrast: High-definition clarity"
+    ]
+  },
+  "theme_strategy": {
+    "mode": "system",
+    "light": "trustworthy_financial_white",
+    "dark": "pro_developer_midnight_slate"
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Manrope, Plus Jakarta Sans, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-7xl font-bold tracking-tight leading-tight",
+      "h2": "text-4xl md:text-5xl font-semibold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-medium tracking-normal",
+      "body": "text-base md:text-lg leading-relaxed text-muted-foreground",
+      "caption": "text-sm font-medium tracking-wide uppercase text-muted-foreground/80"
+    },
+    "rules": [
+      "Never use Inter for Headings",
+      "Headings must use tight tracking",
+      "Body text must have relaxed leading"
+    ]
+  },
+  "colors": {
+    "primary": {
+      "name": "Royal Blue",
+      "hex": "#4361EE",
+      "tailwind": "bg-primary text-primary-foreground",
+      "usage": "Primary CTAs, Active States, Brand Accents"
+    },
+    "palette": {
+      "light": {
+        "background": "0 0% 100%",
+        "foreground": "222.2 84% 4.9%",
+        "card": "0 0% 100%",
+        "card_foreground": "222.2 84% 4.9%",
+        "popover": "0 0% 100%",
+        "popover_foreground": "222.2 84% 4.9%",
+        "primary": "229 84% 60%",
+        "primary_foreground": "210 40% 98%",
+        "secondary": "210 40% 96.1%",
+        "secondary_foreground": "222.2 47.4% 11.2%",
+        "muted": "210 40% 96.1%",
+        "muted_foreground": "215.4 16.3% 46.9%",
+        "accent": "210 40% 96.1%",
+        "accent_foreground": "222.2 47.4% 11.2%",
+        "destructive": "0 84.2% 60.2%",
+        "destructive_foreground": "210 40% 98%",
+        "border": "214.3 31.8% 91.4%",
+        "input": "214.3 31.8% 91.4%",
+        "ring": "229 84% 60%",
+        "radius": "0.5rem"
+      },
+      "dark": {
+        "background": "222.2 84% 4.9%",
+        "foreground": "210 40% 98%",
+        "card": "222.2 84% 4.9%",
+        "card_foreground": "210 40% 98%",
+        "popover": "222.2 84% 4.9%",
+        "popover_foreground": "210 40% 98%",
+        "primary": "229 84% 60%",
+        "primary_foreground": "222.2 47.4% 11.2%",
+        "secondary": "217.2 32.6% 17.5%",
+        "secondary_foreground": "210 40% 98%",
+        "muted": "217.2 32.6% 17.5%",
+        "muted_foreground": "215 20.2% 65.1%",
+        "accent": "217.2 32.6% 17.5%",
+        "accent_foreground": "210 40% 98%",
+        "destructive": "0 62.8% 30.6%",
+        "destructive_foreground": "210 40% 98%",
+        "border": "217.2 32.6% 17.5%",
+        "input": "217.2 32.6% 17.5%",
+        "ring": "229 84% 60%"
+      }
+    }
+  },
+  "layout_strategy": {
+    "spacing_scale": ["p-4", "p-8", "p-12", "p-24", "gap-4", "gap-8", "gap-12"],
+    "marketing": {
+      "grid_mode": "Tetris",
+      "columns": "grid-cols-1 md:grid-cols-12",
+      "gap": "gap-8 md:gap-12",
+      "container": "container mx-auto px-4 md:px-8 max-w-7xl",
+      "section_spacing": "py-24 md:py-32"
+    },
+    "dashboard": {
+      "grid_mode": "High Density",
+      "columns": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4",
+      "gap": "gap-4",
+      "card_style": "flat_bordered",
+      "sidebar": "fixed left-0 top-0 h-full w-64 border-r bg-card/50 backdrop-blur-xl z-50 hidden md:block"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 active:translate-y-0",
+      "secondary": "bg-secondary hover:bg-secondary/80 text-secondary-foreground border border-transparent",
+      "outline": "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+      "ghost": "hover:bg-accent hover:text-accent-foreground"
+    },
+    "cards": {
+      "default": "rounded-xl border border-border/50 bg-card text-card-foreground shadow-sm",
+      "hover": "hover:shadow-md hover:border-primary/20 transition-all duration-300",
+      "glass": "bg-white/70 dark:bg-black/60 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl"
+    },
+    "inputs": {
+      "style": "rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+    }
+  },
+  "visual_enhancers": {
+    "gradients": {
+      "hero_glow": "bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-background to-background",
+      "subtle_mesh": "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"
+    },
+    "borders": "1px solid var(--border)",
+    "shadows": {
+      "subtle": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+      "glow": "0 0 20px -5px var(--primary)"
+    }
+  },
+  "motion": {
+    "transitions": "transition-all duration-200 ease-in-out",
+    "hover_lift": "hover:-translate-y-1 hover:shadow-lg",
+    "page_load": "animate-in fade-in slide-in-from-bottom-4 duration-700",
+    "libraries": ["framer-motion", "lenis"]
+  },
+  "images": {
+    "hero": {
+      "url": "https://images.pexels.com/photos/251225/pexels-photo-251225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "alt": "Minimalist creative workspace with dual monitors",
+      "position": "Hero Section Right/Bottom"
+    },
+    "agency_growth": {
+      "url": "https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "alt": "Modern open plan agency office",
+      "position": "Features Section / About"
+    },
+    "freelancer_focus": {
+      "url": "https://images.pexels.com/photos/3944400/pexels-photo-3944400.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "alt": "Clean desk setup flatlay",
+      "position": "Freelancer Benefits Section"
+    }
+  },
+  "accessibility": {
+    "rules": [
+      "Ensure 4.5:1 contrast for normal text",
+      "Use semantic HTML (main, section, nav)",
+      "All interactive elements must have focus states",
+      "Do not rely on color alone for status (use icons/labels)"
+    ]
+  },
+  "universal_guidelines": [
+    "Do not use generic centered layouts.",
+    "Use glass-morphism with 12-24px blur for overlays.",
+    "Avoid 'transition: all'; animate specific properties.",
+    "Do not center align the app container globally.",
+    "Use pill-shaped or sharp buttons; avoid default radius.",
+    "Micro-animations on every interaction.",
+    "Use 2-3x generous spacing.",
+    "Add grain/noise textures for depth.",
+    "Use 'sonner' for toasts.",
+    "Use 'data-testid' on all interactive elements."
+  ],
+  "instructions_to_main_agent": [
+    "1. INSTALL FONTS: Add Manrope and JetBrains Mono via @fontsource or Google Fonts.",
+    "2. CONFIGURE TAILWIND: Update tailwind.config.js to include the new colors and fonts.",
+    "3. UPDATE CSS VARIABLES: Replace the contents of index.css/globals.css with the HSL values provided in 'colors.palette'.",
+    "4. SCAFFOLD LAYOUTS: Create the Dashboard Layout (Sidebar + Header) and Marketing Layout (Navbar + Footer).",
+    "5. BUILD COMPONENTS: Customize Shadcn components (Card, Button, Input) to match the 'Royal Blue' theme.",
+    "6. IMPLEMENT PAGES: Build Landing, Dashboard, Invoices, and Projects pages using the 'Tetris' and 'High Density' grid modes.",
+    "7. ADD MOTION: Wrap page transitions with AnimatePresence (if using framer-motion) or simple CSS animations."
+  ]
+}
