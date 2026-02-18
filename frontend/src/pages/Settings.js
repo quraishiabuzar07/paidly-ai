@@ -120,6 +120,55 @@ const Settings = () => {
               )}
             </CardContent>
           </Card>
+
+          {/* Automated Reminders Info */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Automated Payment Reminders</CardTitle>
+              <CardDescription>Intelligent reminder system running 24/7</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm">
+                ClientNudge AI automatically monitors all your unpaid invoices and sends professional payment reminders at optimal times:
+              </p>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">3d</div>
+                  <div>
+                    <p className="font-medium">Polite Reminder</p>
+                    <p className="text-muted-foreground text-xs">3 days before due date</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">0d</div>
+                  <div>
+                    <p className="font-medium">Due Today Reminder</p>
+                    <p className="text-muted-foreground text-xs">On the due date</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-600 font-semibold">+1d</div>
+                  <div>
+                    <p className="font-medium">Firm Reminder</p>
+                    <p className="text-muted-foreground text-xs">1 day overdue</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-600 font-semibold">+7d</div>
+                  <div>
+                    <p className="font-medium">Final Notice + Late Fee</p>
+                    <p className="text-muted-foreground text-xs">7 days overdue (applies late fee if enabled)</p>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-4 border-t">
+                <p className="text-xs text-muted-foreground">
+                  <strong>Schedule:</strong> Runs daily at 9:00 AM UTC • 
+                  <strong> AI-Powered:</strong> {user?.subscription_plan !== 'free' ? 'Enabled ✓' : 'Upgrade to Pro for AI reminders'}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
