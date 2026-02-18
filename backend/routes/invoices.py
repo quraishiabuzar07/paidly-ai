@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from models import InvoiceCreate, Invoice, InvoiceItem
-from database import invoices_collection, invoice_items_collection, clients_collection, projects_collection, users_collection
+from database import invoices_collection, invoice_items_collection, clients_collection, projects_collection, users_collection, deliverables_collection
 from utils.auth import get_current_user
 from utils.invoice_helpers import calculate_invoice_totals, generate_invoice_number
 import uuid
