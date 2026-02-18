@@ -126,22 +126,12 @@ const Invoices = () => {
         </div>
       </div>
 
-      <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Create Invoice</DialogTitle>
-            <DialogDescription>This feature requires a client. Please create a client first from Projects.</DialogDescription>
-          </DialogHeader>
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              To create a professional invoice with all features, start by creating a project and client.
-            </p>
-            <Button onClick={() => navigate('/projects')} className="w-full" data-testid="go-to-projects-btn">
-              Go to Projects
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <InvoiceCreateForm
+        open={createDialogOpen}
+        onOpenChange={setCreateDialogOpen}
+        clients={clients}
+        onSuccess={fetchData}
+      />
     </div>
   );
 };
