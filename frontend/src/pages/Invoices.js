@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
 import api from '../lib/api';
 import { formatCurrency } from '../utils/currency';
 import { Plus, FileText } from 'lucide-react';
 import { toast } from 'sonner';
 import Sidebar from '../components/Sidebar';
 import { useAuth } from '../contexts/AuthContext';
+import InvoiceCreateForm from '../components/InvoiceCreateForm';
 
 const Invoices = () => {
   const navigate = useNavigate();
