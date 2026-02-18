@@ -74,4 +74,10 @@ logger = logging.getLogger(__name__)
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
+    stop_scheduler()
     client.close()
+
+@app.on_event("startup")
+async def startup_event():
+    start_scheduler()
+    logger.info("Application started with automated reminder scheduler")
