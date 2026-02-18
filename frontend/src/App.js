@@ -35,6 +35,7 @@ const AppRoutes = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Landing />} />
+        <Route path="/portal/:id" element={<ClientPortal />} />
         <Route
           path="/dashboard"
           element={
@@ -56,6 +57,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <Invoices />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/invoices/:id"
+          element={
+            <ProtectedRoute>
+              <InvoiceDetail />
             </ProtectedRoute>
           }
         />
