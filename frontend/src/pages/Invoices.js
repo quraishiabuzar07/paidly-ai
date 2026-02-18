@@ -14,19 +14,24 @@ const Invoices = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [invoices, setInvoices] = useState([]);
+  const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
 
   useEffect(() => {
-    fetchInvoices();
+    fetchData();
   }, []);
 
-  const fetchInvoices = async () => {
+  const fetchData = async () => {
     try {
-      const response = await api.get('/invoices');
-      setInvoices(response.data);
+      const [invoicesRes, clientsRes] = await Promise.all([
+        api.get('/invoices'),
+        api.get('/clients'),
+      ]);
+      setInvoices(invoicesRes.data);
+      setClients(clientsRes.data);
     } catch (error) {
-      toast.error('Failed to load invoices');
+      toast.error('Failed to load data');
     } finally {
       setLoading(false);
     }
