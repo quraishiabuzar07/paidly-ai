@@ -1,8 +1,10 @@
 from fastapi import APIRouter, HTTPException, Depends
+from fastapi.responses import StreamingResponse
 from models import InvoiceCreate, Invoice, InvoiceItem
 from database import invoices_collection, invoice_items_collection, clients_collection, projects_collection, users_collection, deliverables_collection
 from utils.auth import get_current_user
 from utils.invoice_helpers import calculate_invoice_totals, generate_invoice_number
+from utils.pdf_generator import generate_invoice_pdf
 import uuid
 from datetime import datetime, timezone
 from typing import List
