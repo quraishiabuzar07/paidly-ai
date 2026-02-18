@@ -16,6 +16,9 @@ from typing import Optional
 # Import routes
 from routes import auth, users, clients, projects, invoices, payments, reminders, analytics, deliverables, admin
 
+# Import scheduler
+from utils.scheduler import start_scheduler, stop_scheduler
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
