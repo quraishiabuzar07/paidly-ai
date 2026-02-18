@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Textarea } from '../components/ui/textarea';
 import api from '../lib/api';
 import { formatCurrency } from '../utils/currency';
-import { Copy, Upload, Mail, FileText, Lock, Unlock, Download, Send } from 'lucide-react';
+import { Copy, Upload, Mail, FileText, Lock, Unlock, Download, Send, FileDown } from 'lucide-react';
 import { toast } from 'sonner';
 import Sidebar from '../components/Sidebar';
 
