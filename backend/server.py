@@ -14,7 +14,7 @@ import jwt
 from typing import Optional
 
 # Import routes
-from routes import auth, users, clients, projects, invoices, payments, reminders, analytics, deliverables, admin
+from routes import auth, users, clients, projects, invoices, payments, reminders, analytics, deliverables, admin, razorpay
 
 # Import scheduler
 from utils.scheduler import start_scheduler, stop_scheduler
