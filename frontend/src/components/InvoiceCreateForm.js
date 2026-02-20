@@ -100,24 +100,24 @@ const InvoiceCreateForm = ({ open, onOpenChange, clients, onSuccess }) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className=\"max-w-4xl max-h-[90vh] overflow-y-auto\">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Create New Invoice</DialogTitle>
           <DialogDescription>Create a professional invoice with all features</DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className=\"space-y-6\">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Client Selection */}
-          <div className=\"grid md:grid-cols-2 gap-4\">
-            <div className=\"space-y-2\">
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="space-y-2">
               <Label>Client *</Label>
               <Select
                 value={formData.client_id}
                 onValueChange={(value) => setFormData({ ...formData, client_id: value })}
                 required
               >
-                <SelectTrigger data-testid=\"client-select\">
-                  <SelectValue placeholder=\"Select client\" />
+                <SelectTrigger data-testid="client-select">
+                  <SelectValue placeholder="Select client" />
                 </SelectTrigger>
                 <SelectContent>
                   {clients.map((client) => (
@@ -129,7 +129,7 @@ const InvoiceCreateForm = ({ open, onOpenChange, clients, onSuccess }) => {
               </Select>
             </div>
 
-            <div className=\"space-y-2\">
+            <div className="space-y-2">
               <Label>Currency</Label>
               <Select
                 value={formData.currency}
@@ -150,61 +150,61 @@ const InvoiceCreateForm = ({ open, onOpenChange, clients, onSuccess }) => {
           </div>
 
           {/* Invoice Items */}
-          <div className=\"space-y-3\">
-            <div className=\"flex items-center justify-between\">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
               <Label>Items *</Label>
-              <Button type=\"button\" size=\"sm\" onClick={handleAddItem} data-testid=\"add-item-btn\">
-                <Plus className=\"h-4 w-4 mr-1\" />
+              <Button type="button" size="sm" onClick={handleAddItem} data-testid="add-item-btn">
+                <Plus className="h-4 w-4 mr-1" />
                 Add Item
               </Button>
             </div>
 
             {formData.items.map((item, index) => (
-              <div key={index} className=\"grid grid-cols-12 gap-2 items-end\">
-                <div className=\"col-span-5\">
+              <div key={index} className="grid grid-cols-12 gap-2 items-end">
+                <div className="col-span-5">
                   <Input
-                    placeholder=\"Description\"
+                    placeholder="Description"
                     value={item.description}
                     onChange={(e) => handleItemChange(index, 'description', e.target.value)}
                     required
                   />
                 </div>
-                <div className=\"col-span-2\">
+                <div className="col-span-2">
                   <Input
-                    type=\"number\"
-                    placeholder=\"Qty\"
+                    type="number"
+                    placeholder="Qty"
                     value={item.quantity}
                     onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
-                    min=\"1\"
+                    min="1"
                     required
                   />
                 </div>
-                <div className=\"col-span-2\">
+                <div className="col-span-2">
                   <Input
-                    type=\"number\"
-                    placeholder=\"Rate\"
+                    type="number"
+                    placeholder="Rate"
                     value={item.rate}
                     onChange={(e) => handleItemChange(index, 'rate', e.target.value)}
-                    step=\"0.01\"
-                    min=\"0\"
+                    step="0.01"
+                    min="0"
                     required
                   />
                 </div>
-                <div className=\"col-span-2\">
+                <div className="col-span-2">
                   <Input
                     value={`${CURRENCIES.find(c => c.code === formData.currency)?.symbol}${(item.quantity * item.rate).toFixed(2)}`}
                     disabled
                   />
                 </div>
-                <div className=\"col-span-1\">
+                <div className="col-span-1">
                   {formData.items.length > 1 && (
                     <Button
-                      type=\"button\"
-                      variant=\"ghost\"
-                      size=\"icon\"
+                      type="button"
+                      variant="ghost"
+                      size="icon"
                       onClick={() => handleRemoveItem(index)}
                     >
-                      <Trash2 className=\"h-4 w-4\" />
+                      <Trash2 className="h-4 w-4" />
                     </Button>
                   )}
                 </div>
@@ -213,98 +213,98 @@ const InvoiceCreateForm = ({ open, onOpenChange, clients, onSuccess }) => {
           </div>
 
           {/* Tax and Discount */}
-          <div className=\"grid md:grid-cols-3 gap-4\">
-            <div className=\"space-y-2\">
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="space-y-2">
               <Label>Tax %</Label>
               <Input
-                type=\"number\"
+                type="number"
                 value={formData.tax_percentage}
                 onChange={(e) => setFormData({ ...formData, tax_percentage: e.target.value })}
-                step=\"0.01\"
-                min=\"0\"
-                data-testid=\"tax-input\"
+                step="0.01"
+                min="0"
+                data-testid="tax-input"
               />
             </div>
 
-            <div className=\"space-y-2\">
+            <div className="space-y-2">
               <Label>Discount Type</Label>
               <Select
                 value={formData.discount_type}
                 onValueChange={(value) => setFormData({ ...formData, discount_type: value })}
               >
-                <SelectTrigger data-testid=\"discount-type-select\">
+                <SelectTrigger data-testid="discount-type-select">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value=\"none\">No Discount</SelectItem>
-                  <SelectItem value=\"percentage\">Percentage</SelectItem>
-                  <SelectItem value=\"fixed\">Fixed Amount</SelectItem>
+                  <SelectItem value="none">No Discount</SelectItem>
+                  <SelectItem value="percentage">Percentage</SelectItem>
+                  <SelectItem value="fixed">Fixed Amount</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             {formData.discount_type !== 'none' && (
-              <div className=\"space-y-2\">
+              <div className="space-y-2">
                 <Label>Discount Value</Label>
                 <Input
-                  type=\"number\"
+                  type="number"
                   value={formData.discount_value}
                   onChange={(e) => setFormData({ ...formData, discount_value: e.target.value })}
-                  step=\"0.01\"
-                  min=\"0\"
-                  data-testid=\"discount-value-input\"
+                  step="0.01"
+                  min="0"
+                  data-testid="discount-value-input"
                 />
               </div>
             )}
           </div>
 
           {/* Due Date */}
-          <div className=\"space-y-2\">
+          <div className="space-y-2">
             <Label>Due Date *</Label>
             <Input
-              type=\"date\"
+              type="date"
               value={formData.due_date}
               onChange={(e) => setFormData({ ...formData, due_date: e.target.value })}
               required
-              data-testid=\"due-date-input\"
+              data-testid="due-date-input"
             />
           </div>
 
           {/* Late Fee Settings */}
-          <div className=\"space-y-4 p-4 rounded-lg border\">
-            <div className=\"flex items-center justify-between\">
+          <div className="space-y-4 p-4 rounded-lg border">
+            <div className="flex items-center justify-between">
               <div>
                 <Label>Enable Late Fee</Label>
-                <p className=\"text-sm text-muted-foreground\">Automatically apply late fee after due date</p>
+                <p className="text-sm text-muted-foreground">Automatically apply late fee after due date</p>
               </div>
               <Switch
                 checked={formData.late_fee_enabled}
                 onCheckedChange={(checked) => setFormData({ ...formData, late_fee_enabled: checked })}
-                data-testid=\"late-fee-toggle\"
+                data-testid="late-fee-toggle"
               />
             </div>
 
             {formData.late_fee_enabled && (
-              <div className=\"grid md:grid-cols-2 gap-4\">
-                <div className=\"space-y-2\">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
                   <Label>Late Fee %</Label>
                   <Input
-                    type=\"number\"
+                    type="number"
                     value={formData.late_fee_percentage}
                     onChange={(e) => setFormData({ ...formData, late_fee_percentage: e.target.value })}
-                    step=\"0.01\"
-                    min=\"0\"
-                    data-testid=\"late-fee-percentage-input\"
+                    step="0.01"
+                    min="0"
+                    data-testid="late-fee-percentage-input"
                   />
                 </div>
-                <div className=\"space-y-2\">
+                <div className="space-y-2">
                   <Label>Apply After (days)</Label>
                   <Input
-                    type=\"number\"
+                    type="number"
                     value={formData.late_fee_days}
                     onChange={(e) => setFormData({ ...formData, late_fee_days: e.target.value })}
-                    min=\"1\"
-                    data-testid=\"late-fee-days-input\"
+                    min="1"
+                    data-testid="late-fee-days-input"
                   />
                 </div>
               </div>
@@ -312,35 +312,35 @@ const InvoiceCreateForm = ({ open, onOpenChange, clients, onSuccess }) => {
           </div>
 
           {/* Auto Reminders */}
-          <div className=\"flex items-center justify-between p-4 rounded-lg border\">
+          <div className="flex items-center justify-between p-4 rounded-lg border">
             <div>
               <Label>Automatic Reminders</Label>
-              <p className=\"text-sm text-muted-foreground\">Send automated payment reminders</p>
+              <p className="text-sm text-muted-foreground">Send automated payment reminders</p>
             </div>
             <Switch
               checked={formData.auto_reminders}
               onCheckedChange={(checked) => setFormData({ ...formData, auto_reminders: checked })}
-              data-testid=\"auto-reminders-toggle\"
+              data-testid="auto-reminders-toggle"
             />
           </div>
 
           {/* Total Summary */}
-          <div className=\"space-y-2 p-4 rounded-lg bg-muted/50\">
-            <div className=\"flex justify-between text-sm\">
+          <div className="space-y-2 p-4 rounded-lg bg-muted/50">
+            <div className="flex justify-between text-sm">
               <span>Subtotal:</span>
-              <span className=\"font-mono\">{CURRENCIES.find(c => c.code === formData.currency)?.symbol}{subtotal.toFixed(2)}</span>
+              <span className="font-mono">{CURRENCIES.find(c => c.code === formData.currency)?.symbol}{subtotal.toFixed(2)}</span>
             </div>
-            <div className=\"flex justify-between text-lg font-bold\">
+            <div className="flex justify-between text-lg font-bold">
               <span>Total:</span>
-              <span className=\"font-mono\">{CURRENCIES.find(c => c.code === formData.currency)?.symbol}{total.toFixed(2)}</span>
+              <span className="font-mono">{CURRENCIES.find(c => c.code === formData.currency)?.symbol}{total.toFixed(2)}</span>
             </div>
           </div>
 
           <DialogFooter>
-            <Button type=\"button\" variant=\"outline\" onClick={() => onOpenChange(false)}>
+            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Cancel
             </Button>
-            <Button type=\"submit\" disabled={loading} data-testid=\"create-invoice-submit\">
+            <Button type="submit" disabled={loading} data-testid="create-invoice-submit">
               {loading ? 'Creating...' : 'Create Invoice'}
             </Button>
           </DialogFooter>
