@@ -143,8 +143,8 @@ Response:
 
 ### Environment Variables
 ```bash
-RAZORPAY_KEY_ID=rzp_test_1234567890
-RAZORPAY_KEY_SECRET=test_secret_1234567890
+RAZORPAY_KEY_ID=rzp_test_SIN88A2SWYICLu
+RAZORPAY_KEY_SECRET=Asytjb8lppwZlJUI9m1rbK0T
 RAZORPAY_WEBHOOK_SECRET=webhook_secret_1234567890
 ```
 
