@@ -80,18 +80,15 @@ const ClientPortal = () => {
   const handlePayment = async () => {
     setPaying(true);
     try {
-      const originUrl = window.location.origin;
-      const response = await api.post('/payments/create-checkout-session', null, {
-        params: {
-          invoice_id: id,
-          origin_url: originUrl,
-        },
+      // Use Razorpay for payment
+      await initiateInvoicePayment(id, invoice.invoice_number, {
+        name: client.name,
+        email: client.email,
+        phone: client.phone,
       });
-
-      // Redirect to Stripe
-      window.location.href = response.data.url;
     } catch (error) {
       toast.error(error.response?.data?.detail || 'Failed to initiate payment');
+    } finally {
       setPaying(false);
     }
   };
