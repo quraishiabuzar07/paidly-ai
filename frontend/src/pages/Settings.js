@@ -9,15 +9,16 @@ import { useRazorpay } from '../hooks/useRazorpay';
 
 const Settings = () => {
   const { user, updateUser } = useAuth();
+  const { initiateSubscriptionPayment } = useRazorpay();
 
   const handleUpgrade = async (plan) => {
     try {
-      await api.post('/admin/upgrade', null, { params: { plan } });
-      const updatedUser = { ...user, subscription_plan: plan };
-      updateUser(updatedUser);
-      toast.success(`Successfully upgraded to ${plan} plan!`);
+      await initiateSubscriptionPayment(plan, {
+        name: user.full_name,
+        email: user.email,
+      });
     } catch (error) {
-      toast.error(error.response?.data?.detail || 'Failed to upgrade');
+      toast.error(error.response?.data?.detail || 'Failed to initiate upgrade');
     }
   };
 
