@@ -15,6 +15,7 @@ const ClientPortal = () => {
   const [paying, setPaying] = useState(false);
   const [sessionId, setSessionId] = useState(null);
   const [pollingPayment, setPollingPayment] = useState(false);
+  const { initiateInvoicePayment } = useRazorpay();
 
   useEffect(() => {
     fetchInvoiceData();
