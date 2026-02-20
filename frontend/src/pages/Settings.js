@@ -4,8 +4,8 @@ import { Button } from '../components/ui/button';
 import { useAuth } from '../contexts/AuthContext';
 import { Crown, Zap } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
-import api from '../lib/api';
 import { toast } from 'sonner';
+import { useRazorpay } from '../hooks/useRazorpay';
 
 const Settings = () => {
   const { user, updateUser } = useAuth();
