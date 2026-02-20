@@ -203,8 +203,8 @@ def run_reminder_check():
     asyncio.run(check_and_send_reminders())
 
 def start_scheduler():
-    """Start the background scheduler for automated reminders"""
-    # Run daily at 9 AM UTC
+    """Start the background scheduler for automated reminders and subscription checks"""
+    # Run daily at 9 AM UTC for reminders
     scheduler.add_job(
         run_reminder_check,
         CronTrigger(hour=9, minute=0),
@@ -212,8 +212,16 @@ def start_scheduler():
         replace_existing=True
     )
     
+    # Run daily at 10 AM UTC for subscription expiry check
+    scheduler.add_job(
+        run_subscription_check,
+        CronTrigger(hour=10, minute=0),
+        id='subscription_check',
+        replace_existing=True
+    )
+    
     scheduler.start()
-    logger.info("Automated reminder scheduler started (runs daily at 9 AM UTC)")
+    logger.info("Automated scheduler started (reminders at 9 AM, subscriptions at 10 AM UTC)")
 
 def stop_scheduler():
     """Stop the scheduler"""
