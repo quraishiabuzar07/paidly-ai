@@ -6,6 +6,7 @@ import api from '../lib/api';
 import { formatCurrency } from '../utils/currency';
 import { Lock, Unlock, Download, CreditCard, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
+import { useRazorpay } from '../hooks/useRazorpay';
 
 const ClientPortal = () => {
   const { id } = useParams();
