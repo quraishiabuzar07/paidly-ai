@@ -219,3 +219,52 @@ def stop_scheduler():
     """Stop the scheduler"""
     scheduler.shutdown()
     logger.info("Scheduler stopped")
+
+
+async def check_and_cancel_expired_subscriptions():
+    """Check and cancel expired subscriptions (30 days unpaid)"""
+    try:
+        logger.info("Checking for expired subscriptions...")
+        now = datetime.now(timezone.utc)
+        
+        from database import subscriptions_collection, users_collection
+        
+        # Get all active subscriptions
+        subscriptions = await subscriptions_collection.find({"status": "active"}, {"_id": 0}).to_list(10000)
+        
+        for subscription in subscriptions:
+            if not subscription.get("end_date"):
+                continue
+            
+            end_date = datetime.fromisoformat(subscription["end_date"].replace('Z', '+00:00'))
+            
+            # Check if subscription has expired
+            if now > end_date:
+                # Cancel subscription
+                await subscriptions_collection.update_one(
+                    {"id": subscription["id"]},
+                    {"$set": {
+                        "status": "cancelled",
+                        "cancelled_at": now.isoformat(),
+                        "cancellation_reason": "expired_unpaid"
+                    }}
+                )
+                
+                # Downgrade user to free plan
+                await users_collection.update_one(
+                    {"id": subscription["user_id"]},
+                    {"$set": {
+                        "subscription_plan": "free",
+                        "subscription_status": "inactive"
+                    }}
+                )
+                
+                logger.info(f"Subscription {subscription['id']} cancelled due to expiry")
+        
+        logger.info(f"Checked {len(subscriptions)} subscriptions")
+    except Exception as e:
+        logger.error(f"Error checking expired subscriptions: {e}")
+
+def run_subscription_check():
+    """Wrapper to run async subscription check"""
+    asyncio.run(check_and_cancel_expired_subscriptions())
