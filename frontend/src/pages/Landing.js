@@ -85,7 +85,7 @@ const Landing = () => {
     },
     {
       name: 'Pro',
-      price: '$19',
+      price: '$12',
       popular: true,
       features: [
         'Unlimited invoices',
@@ -98,7 +98,7 @@ const Landing = () => {
     },
     {
       name: 'Agency',
-      price: '$39',
+      price: '$29',
       features: [
         'Everything in Pro',
         'Advanced analytics',
